@@ -22,10 +22,10 @@ mod4 a b | b == Zero = Zero
         | otherwise=mod1 a b Zero where
                                 mod1 a b n  | b <= Zero = n
                                             | otherwise = mod1 a (mns b a) (inc n)
-mydiv Zero x= Zero
-mydiv x Zero= Zero
-mydiv x (Succ Zero)=x
-mydiv x y| x==y = (Succ Zero) 
-         | otherwise = mydiv' x y Zero where mydiv' x y count|x==y=(Succ count)
+div1 Zero x= Zero
+div1 x Zero= Zero
+div1 x (Succ Zero)=x
+div1 x y| x==y = (Succ Zero) 
+         | otherwise = div1' x y Zero where div1' x y count|x==y=(Succ count)
                                                                               |mns x y==Zero=count
-                                                                              |otherwise= mydiv' (mns x y) y (Succ count)
+                                                                              |otherwise= div1' (mns x y) y (Succ count)

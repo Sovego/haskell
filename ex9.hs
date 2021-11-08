@@ -33,7 +33,7 @@ pred1 y x =pred1' y x Zero
 pred1' y x n | mlt y n ==x = True 
              | n==x = False
              | otherwise = pred1' y x (inc n) 
-nd x = nd1 x (Succ Zero) (Succ Zero) 
-nd1 x y n | y == x =  n  
-          | pred1 y x  = nd1 x (inc y) (inc n)                                           
-          | otherwise = nd1 x (inc y) n
+prime x = prime1 x (Succ Zero)
+prime1 x y | x == y = True
+           | pred1 x y = False
+           | otherwise = prime1 x (inc y)
