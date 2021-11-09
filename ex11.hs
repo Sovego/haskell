@@ -1,5 +1,3 @@
-
-
 data Number = Zero | Succ Number deriving (Eq, Show)
 
 inc :: Number -> Number
@@ -27,5 +25,14 @@ mod1 x y| x==y = (Succ Zero)
          | otherwise = mod1' x y Zero where mod1' x y count|x==y=(Succ count)
                                                                               |mns x y==Zero=x
                                                                               |otherwise= mod1' (mns x y) y (Succ count)
-gcd' Zero a =  a
-gcd' a b  =  gcd' (mod1 b a) a 
+moreThan (Zero) _ = False;
+moreThan _ (Zero) = True;
+moreThan a b = moreThan (dec a) (dec b);
+pred1 y x =pred1' y x Zero
+pred1' y x n | mlt y n ==x = True
+             | n==x = False
+             | otherwise = pred1' y x (inc n)
+
+gcd' m n | m == n = m
+           | moreThan n m = gcd' m (mns n m)
+           | otherwise = gcd' (mns m n) n
