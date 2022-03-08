@@ -26,7 +26,6 @@ main = do
     [mode,input,output] <- getArgs
     let filename = "test"
     let fileout = "testout"
-    
     bytestr <- BS.readFile filename
     let strc = BS.unpack bytestr
     let series = toSeries strc
