@@ -4,6 +4,7 @@ import Data.List (group)
 import Data.Char (intToDigit, chr)
 import qualified Data.String as BS
 import qualified Data.Word as GHC.Word
+import System.Environment (getArgs)
 
 toSeries :: [GHC.Word.Word8] -> [[GHC.Word.Word8]]
 toSeries = group
@@ -22,6 +23,7 @@ writeCode xs = concat (countcode xs)
 
 main :: IO ()
 main = do
+    [mode,input,output] <- getArgs
     let filename = "test"
     let fileout = "testout"
     bytestr <- BS.readFile filename
